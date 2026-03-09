@@ -44,7 +44,7 @@ public class PaymentServiceImpl implements PaymentService {
                 .orElseThrow(() -> new EntityNotFoundException("Appointment not found"));
 
         // Set your Stripe secret key (in production, do not hardcode; use a secure configuration)
-        Stripe.apiKey = "sk_test_51QqXLHPQnnkSg4rUb9tdkL7uMz70vdX5ylddLhK81bRJFutCGvexHgl5wg5CEQmkxuSeAPw11VNTlbRV9aKXDhfh00ZrLNHZiT"; // Replace with your actual secret key
+        Stripe.apiKey = System.getenv("STRIPE_SECRET_KEY"); // Replace with your actual secret key
 
         // Convert the amount to the smallest currency unit (e.g., cents) if needed.
         long amountInCents = (long) (amount * 100);
